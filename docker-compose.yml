@@ -1,0 +1,39 @@
+version: "3.6"
+
+services:
+    portainer:
+        image: portainer/portainer-ce:latest
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - ./docker/portainer/data:/data:rw
+        ports:
+            - "9001:9000"
+
+    php-store:
+        container_name: php-store
+        build:
+            context: .
+            args:
+                PHP_VERSION: ${PHP_VERSION:-8.1}
+                COMPOSER_VERSION: ${COMPOSER_VERSION:-latest}
+        working_dir: /app
+        entrypoint: sh ./docker/php/entrypoint.sh
+        volumes:
+            - .:/app:rw
+            - ./docker/php/config/php.ini:/usr/local/etc/php/php.ini:rw
+            - ./docker/php/config/php-cli.ini:/usr/local/etc/php/php-cli.ini:rw
+
+    nginx:
+        depends_on:
+            - php-store
+        image: nginx:latest
+        volumes:
+            - ./public:/app/public
+            - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "80:80"
+
+networks:
+    default:
+        name: story

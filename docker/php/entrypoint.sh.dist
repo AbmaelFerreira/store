@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Setup Symfony directories
+mkdir -p var/cache/dev var/log/dev
+
+# Setup permissions
+chmod -R 777 var/
+
+# Setup git
+git config --global http.sslVerify false
+
+# Build back-end
+composer install
+composer dump-autoload -o
+composer clear-cache
+
+# Build front-end
+npm install
+./node_modules/gulp/bin/gulp.js
+
+
+exec php-fpm
