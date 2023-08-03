@@ -38,7 +38,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 # Setup NodeJS
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSION=8.11.4
+ENV NODE_VERSION=16.20.1
 RUN . "$NVM_DIR/nvm.sh" && nvm install v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
 RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
