@@ -18,6 +18,9 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $body = null;
 
@@ -32,6 +35,8 @@ class Product
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
+
+
 
     public function getId(): ?int
     {
@@ -106,6 +111,18 @@ class Product
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }
