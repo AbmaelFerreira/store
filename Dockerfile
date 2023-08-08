@@ -33,7 +33,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Setup extensões
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions xdebug oci8 sockets amqp soap gd mongodb intl
+    install-php-extensions xdebug oci8 sockets amqp soap gd odbc mysqli pdo_mysql pdo_odbc mongodb intl
 
 # Setup NodeJS
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash

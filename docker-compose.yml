@@ -9,16 +9,17 @@ services:
             - ./docker/portainer/data:/data:rw
         ports:
             - "9001:9000"
-    database:
-        image: mysql
+    mysql:
+        image: mysql:5.7
         command: --default-authentication-plugin=mysql_native_password
+        restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: db_store
         ports:
             - "3306:3306"
         volumes:
-            - ./docker/mysql/data:/var/lib/mysql:rw
+            - ./docker/mysql:/var/lib/mysql
 
     php-store:
         container_name: php-store
