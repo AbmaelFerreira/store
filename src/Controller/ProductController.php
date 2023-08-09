@@ -43,8 +43,39 @@ class ProductController extends AbstractController
 //
 //           $this->productService->save($product, flush: true);
 
-            $product = $this->productService->find(1);
-            $this->productService->remove($product,  flush: true);
+//          REMOÇÃO
+//            $product = $this->productService->find(1);
+//            $this->productService->remove($product,  flush: true);
+
+
+            //Busca de todos os produtos
+
+//                $products = $this->productService->findAll();
+//                dd($products);
+
+
+            //Busca um produto especifico
+//
+//                    $product = $this->productService->find(2);
+//                    print $product->getName();
+
+
+
+            //Busca um produto via slug
+                // Retorna todos (ou seja um array) conforme o array de parametros passado
+                //IMPORTANTE
+
+//                $product = $this->productService->findBy([
+//                        'price'=> 2930,
+//                        'description' => 'Foto'
+//                ]);
+
+            //Buscando um produto via slug com o findOneBy
+
+                $product = $this->productService->findOneBy(['id'=> 3]);
+
+                dd($product);
+
 
 
         return $this->render('product/index.html.twig', [

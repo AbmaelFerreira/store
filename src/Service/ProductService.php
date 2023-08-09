@@ -32,4 +32,20 @@
         {
               $this->productRepository->remove($id, $flush);
         }
+
+        public function findAll(): ?array
+        {
+            return  $this->productRepository->findAll();
+        }
+
+        public function findBy(array $criterio): ?array
+        {
+            return  $this->productRepository->findBy($criterio);
+        }
+
+        public function findOneBy(array $criterio): ?Product
+        {
+            return  $this->productRepository->findOneBy($criterio);
+        }
+
     }
