@@ -27,4 +27,9 @@
         {
            return  $this->productRepository->find($id);
         }
+
+        public function remove(Product $id, $flush): void
+        {
+              $this->productRepository->remove($id, $flush);
+        }
     }

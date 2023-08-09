@@ -19,7 +19,7 @@ class ProductController extends AbstractController
     public function index(): Response
     {
 
-
+//            INSERÇÃO
 //            $product = new Product();
 //            $product->setName('Produto test2');
 //            $product->setDescription('Descrição2');
@@ -31,17 +31,20 @@ class ProductController extends AbstractController
 //
 //            $this->productService->save($product, flush: true);
 
+
+//          ATUALIZAÇÃO
 //          FORMA ANTIGA sf 5.4
-//          $product = $this->getDoctrine->getRepository(Product::class);
+//          $product = $this->getDoctrine->getRepository(Product::class)->find(1);
 //          FORMA ATUAL sf 6
+//           $product = $this->productService->find(1);
+//
+//           $product->setName('Produto 2 Atualizado');
+//           $product->setUpdatedAt(new \DateTimeImmutable('now', new \DateTimeZone('America/Cuiaba')));
+//
+//           $this->productService->save($product, flush: true);
+
             $product = $this->productService->find(1);
-
-           $product->setName('Produto Atualizado');
-           $product->setUpdatedAt(new \DateTimeImmutable('now', new \DateTimeZone('America/Cuiaba')));
-
-           $this->productService->save($product, flush: true);
-
-
+            $this->productService->remove($product,  flush: true);
 
 
         return $this->render('product/index.html.twig', [
