@@ -22,4 +22,9 @@
             //$this->getEntityManager()->persist($entity);
             $this->productRepository->save($entity, $flush);
         }
+
+        public function find(int $id): ?Product
+        {
+           return  $this->productRepository->find($id);
+        }
     }
