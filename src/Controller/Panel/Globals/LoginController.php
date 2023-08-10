@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
-    #[Route('/', name: 'app_panel_globals_login')]
+    #[Route('/login', name: 'app_panel_globals_login')]
     public function index(): Response
     {
         $name = "Abmael";
