@@ -17,7 +17,7 @@ class ProductController extends AbstractController
     {
 
         $products = $this->productService->findAll();
-        var_dump($products);
+//        var_dump($products);
         return $this->render('admin/product/index.html.twig', compact('products'));
     }
 
@@ -27,16 +27,16 @@ class ProductController extends AbstractController
 
     }
 
-         //Antes no PHP a referencia do metodo era da seguinte forma: methods={"POST"}
-    #[Route('/store', name: 'store_products', methods:"POST")]
-    public function store()
+     //Antes no PHP a referencia do metodo era da seguinte forma: methods={"POST"}
+    #[Route('/store', name: 'store_products', methods:"GET")]
+    public function store(): void
     {
         $product = new Product();
-        $product->setName('Produto test2');
-        $product->setDescription('Descrição2');
-        $product->setBody('Info Produto2');
-        $product->setSlug('produto-teste 2');
-        $product->setPrice(2990);
+        $product->setName('Produto test3');
+        $product->setDescription('Descrição3');
+        $product->setBody('Info Produto3');
+        $product->setSlug('produto-teste 3');
+        $product->setPrice(2950);
         $product->setCreatedAt(new \DateTimeImmutable('now', new \DateTimeZone('America/Cuiaba')));
         $product->setUpdatedAt(new \DateTimeImmutable('now', new \DateTimeZone('America/Cuiaba')));
 

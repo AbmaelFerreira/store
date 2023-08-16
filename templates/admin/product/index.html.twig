@@ -3,10 +3,31 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
+<div class="row">
+    <div class="col-12">
+        <h1> Produtos</h1>
+        <hr>
+    </div>
 
-
-<div>
-    <h1>Hello Produtos ✅</h1>
-
+    <div class="col-12">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Criado Em</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{  product.id  }}</td>
+                <td>{{  product.name }}</td>
+                <td>{{  product.createdAt | date('d/m/Y  H:i:s')  }}</td>
+            </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
